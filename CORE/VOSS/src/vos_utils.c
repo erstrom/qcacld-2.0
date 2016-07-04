@@ -74,6 +74,8 @@
 #endif
 #include <errno.h>
 
+#include <compat-qcacld.h>
+
 #include "ieee80211_common.h"
 #include "sirDebug.h"
 /*----------------------------------------------------------------------------
