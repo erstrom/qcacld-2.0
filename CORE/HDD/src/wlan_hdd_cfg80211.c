@@ -123,6 +123,9 @@
 #define INVALID_MCS_IDX 255
 #define GET_IE_LEN_IN_BSS_DESC(lenInBss) ( lenInBss + sizeof(lenInBss) - \
         ((uintptr_t)OFFSET_OF( tSirBssDescription, ieFields)))
+
+#define WIPHY_FLAG_DFS_OFFLOAD BIT(22)
+
 /*
  * Android CTS verifier needs atleast this much wait time (in msec)
  */

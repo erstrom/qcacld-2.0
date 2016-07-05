@@ -1212,6 +1212,7 @@ VOS_STATUS hdd_rx_packet_cbk(v_VOID_t *vosContext,
    while (NULL != skb) {
       skb_next = skb->next;
 
+#if 0
       if (((pHddStaCtx->conn_info.proxyARPService) &&
          cfg80211_is_gratuitous_arp_unsolicited_na(skb)) ||
          vos_is_load_unload_in_progress(VOS_MODULE_ID_VOSS, NULL)) {
@@ -1225,6 +1226,7 @@ VOS_STATUS hdd_rx_packet_cbk(v_VOID_t *vosContext,
             skb = skb_next;
             continue;
       }
+#endif
 
       DPTRACE(adf_dp_trace(rxBuf,
               ADF_DP_TRACE_RX_HDD_PACKET_PTR_RECORD,
