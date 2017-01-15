@@ -16,7 +16,7 @@ endif
 
 ifndef CONFIG_ROME_IF
 	#use pci as default interface
-	CONFIG_ROME_IF = pci
+	CONFIG_ROME_IF = usb
 endif
 
 ifeq ($(KERNEL_BUILD),1)
@@ -194,7 +194,7 @@ CONFIG_MDNS_OFFLOAD_SUPPORT := 1
 endif
 
 #Enable power management suspend/resume functionality to PCI
-CONFIG_ATH_BUS_PM := 1
+CONFIG_ATH_BUS_PM := 0
 
 #Enable dword alignment for IP header
 CONFIG_IP_HDR_ALIGNMENT := 0
@@ -1041,7 +1041,6 @@ CDEFINES :=	-DANI_LITTLE_BYTE_ENDIAN \
 		-DWLAN_PERF \
 		-DPTT_SOCK_SVC_ENABLE \
 		-Wall\
-		-Werror\
 		-D__linux__ \
 		-DHAL_SELF_STA_PER_BSS=1 \
 		-DWLAN_FEATURE_VOWIFI_11R \
@@ -1068,7 +1067,6 @@ CDEFINES :=	-DANI_LITTLE_BYTE_ENDIAN \
 		-DWLAN_WAKEUP_EVENTS \
 		-DFEATURE_WLAN_RA_FILTERING\
 	        -DWLAN_KD_READY_NOTIFIER \
-		-DWLAN_NL80211_TESTMODE \
 		-DFEATURE_WLAN_BATCH_SCAN \
 		-DFEATURE_WLAN_LPHB \
 		-DFEATURE_WLAN_PAL_TIMER_DISABLE \
