@@ -52,10 +52,19 @@
 #include "wlan_hdd_dp_utils.h"
 #endif
 
+#include <linux/version.h>
+
 /*--------------------------------------------------------------------------
   Preprocessor definitions and constants
   ------------------------------------------------------------------------*/
 #define VOS_TIMER_STATE_COOKIE 0x12
+
+#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 6, 0))
+struct timeval {
+	long tv_sec;
+	suseconds_t tv_usec;
+};
+#endif
 
 /*--------------------------------------------------------------------------
   Type declarations
