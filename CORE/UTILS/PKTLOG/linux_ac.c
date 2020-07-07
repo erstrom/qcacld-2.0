@@ -79,12 +79,21 @@ static int pktlog_mmap(struct file *f, struct vm_area_struct *vma);
 static ssize_t pktlog_read(struct file *file, char *buf, size_t nbytes,
 			   loff_t * ppos);
 
+#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 6, 0))
+static const struct proc_ops pktlog_fops = {
+	proc_open:pktlog_open,
+	proc_release:pktlog_release,
+	proc_mmap:pktlog_mmap,
+	proc_read:pktlog_read,
+};
+#else
 static struct file_operations pktlog_fops = {
 	open:pktlog_open,
 	release:pktlog_release,
 	mmap:pktlog_mmap,
 	read:pktlog_read,
 };
+#endif
 
 /*
  * Linux implementation of helper functions
