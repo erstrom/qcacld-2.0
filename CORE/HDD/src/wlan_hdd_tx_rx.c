@@ -1191,7 +1191,11 @@ VOS_STATUS hdd_Ibss_GetStaId(hdd_station_ctx_t *pHddStaCtx, v_MACADDR_t *pMacAdd
   @param dev : [in] pointer to Libra network device
   @return    : None
   ===========================================================================*/
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,6,0)
+void hdd_tx_timeout(struct net_device *dev, unsigned int txqueue)
+#else
 void hdd_tx_timeout(struct net_device *dev)
+#endif
 {
    hdd_adapter_t *pAdapter =  WLAN_HDD_GET_PRIV_PTR(dev);
    struct netdev_queue *txq;

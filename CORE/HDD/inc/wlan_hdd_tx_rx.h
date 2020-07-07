@@ -104,7 +104,11 @@ extern int hdd_mon_hard_start_xmit(struct sk_buff *skb, struct net_device *dev);
   @param dev : [in] pointer to Libra network device
   @return    : None
   ===========================================================================*/
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,6,0)
+extern void hdd_tx_timeout(struct net_device *dev, unsigned int txqueue);
+#else
 extern void hdd_tx_timeout(struct net_device *dev);
+#endif
 
 /**============================================================================
   @brief hdd_stats() - Function registered with the Linux OS for
